@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>投稿一覧</h1>
+
     <div>
         <p>投稿フォーム</p>
         <form action="{{ route('create') }}" method="post">
@@ -21,13 +22,31 @@
             @error('content')
             <p style="color: red">{{ $message }}</p>
             @enderror
-            <button type="submit">送信</button>
-        </form>
+            @if (session('success'))
+    　　　　　　　<p style="color: green;">{{ session('success') }}</p>
+　　　　　　　@endif
+
+    　　　　<button type="submit">送信</button>
+</form>
+
         <p>投稿一覧</p>
         <ul>
             @foreach ($posts as $post)
             <li>{{ $post->content }}</li>
+            <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
+
+            @csrf
+            @method('DELETE')
+            　　　　<button type="submit">削除</button>
+
+            </form>
+            <a href="{{ route('editindex', ['postId' => $post->id]) }}">編集</a>
+
+
+
+
             @endforeach
+        
         </ul>
     </div>
     
