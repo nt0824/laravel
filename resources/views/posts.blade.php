@@ -10,6 +10,7 @@
     <h1>投稿一覧</h1>
 
     <div>
+        @auth
         <p>投稿フォーム</p>
         <form action="{{ route('create') }}" method="post">
             @csrf
@@ -28,6 +29,7 @@
 
     　　　　<button type="submit">送信</button>
 </form>
+@endauth
 
         <p>投稿一覧</p>
         <ul>
