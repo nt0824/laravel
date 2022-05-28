@@ -32,4 +32,10 @@ class CreateRequest extends FormRequest
     {
         return $this->input('content');
     }
+
+    public function userId(): int
+　　{
+    return $this->user()->id;
+　　}
+
 }

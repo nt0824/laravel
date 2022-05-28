@@ -8,6 +8,7 @@ use App\Http\Requests\CreateRequest;
 // モデルの読み込み
 use App\Models\Post;
 
+
 class CreateController extends Controller
 {
     /**
@@ -24,6 +25,9 @@ class CreateController extends Controller
         $post->content = $request->content;
         // データの保存
         $post->save();
+        // ユーザーのIDの取得
+        $post->user_id = $request->userId();
+
         // リダイレクトする
         return redirect()->route('index');
     }

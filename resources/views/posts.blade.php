@@ -34,7 +34,10 @@
         <p>投稿一覧</p>
         <ul>
             @foreach ($posts as $post)
-            <li>{{ $post->content }}</li>
+            <li>{{ $post->content }}
+            {{ $post->user->name }}
+
+            </li>
             <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
 
             @csrf
