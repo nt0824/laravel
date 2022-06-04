@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投稿一覧</title>
 </head>
+
 <body>
     <h1>投稿一覧</h1>
 
@@ -23,10 +24,14 @@
             @error('content')
             <p style="color: red">{{ $message }}</p>
             @enderror
-            @if (session('success'))
-    　　　　　　　<p style="color: green;">{{ session('success') }}</p>
-　　　　　　　@endif
-
+            @if (Auth::id() === $post->user_id)
+                <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
+                 @csrf
+                 @method('DELETE')
+                 <button type="submit">削除</button>
+                </form>
+                <a href="{{ route('editindex', ['postId' => $post->id]) }}">編集</a>
+            @endif
     　　　　<button type="submit">送信</button>
 </form>
 @endauth

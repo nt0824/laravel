@@ -29,4 +29,5 @@ class DeleteController extends Controller
         // ログインしているユーザーのIDと投稿IDが一致しなかったら403エラーを出す
         if (!$this->checkOwnPost($request->user()->id, $postId)) {
         throw new AccessDeniedHttpException();}
-}
+        }
+    }
