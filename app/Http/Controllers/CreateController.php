@@ -23,10 +23,10 @@ class CreateController extends Controller
         $post = new Post();
         // 送信されたcontentの内容をモデルのcontentに格納する
         $post->content = $request->content;
-        // データの保存
-        $post->save();
         // ユーザーのIDの取得
         $post->user_id = $request->userId();
+        // データの保存
+        $post->save();
 
         // リダイレクトする
         return redirect()->route('index');

@@ -29,3 +29,5 @@ Route::delete('/posts/delete/{postId}', \App\Http\Controllers\DeleteController::
 Route::get('/posts/edit/{postId}', \App\Http\Controllers\EditIndexController::class)->name('editindex')->where('postId','[0-9]+');
 Route::put('/posts/edit/{postId}', \App\Http\Controllers\EditController::class)->name('edit')->where('postId','[0-9]+');
 });
+
+Route::get('/posts', \App\Http\Controllers\IndexController::class)->name('index');

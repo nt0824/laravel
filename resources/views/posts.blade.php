@@ -24,6 +24,13 @@
             @error('content')
             <p style="color: red">{{ $message }}</p>
             @enderror
+    　　　　<button type="submit">送信</button>
+</form>
+@endauth
+
+        <p>投稿一覧</p>
+        <ul>
+            @foreach ($posts as $post)
             @if (Auth::id() === $post->user_id)
                 <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
                  @csrf
@@ -32,26 +39,10 @@
                 </form>
                 <a href="{{ route('editindex', ['postId' => $post->id]) }}">編集</a>
             @endif
-    　　　　<button type="submit">送信</button>
-</form>
-@endauth
-
-        <p>投稿一覧</p>
-        <ul>
-            @foreach ($posts as $post)
             <li>{{ $post->content }}
             {{ $post->user->name }}
 
             </li>
-            <form action="{{ route('delete', ['postId' => $post->id]) }}" method="post">
-
-            @csrf
-            @method('DELETE')
-            　　　　<button type="submit">削除</button>
-
-            </form>
-            <a href="{{ route('editindex', ['postId' => $post->id]) }}">編集</a>
-
 
 
 
